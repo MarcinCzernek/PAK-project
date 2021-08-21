@@ -4,6 +4,7 @@ class Comment
 {
     private $db;
     private $name;
+    private $email;
     private $comment;
     private $table = "comments";
 
@@ -12,15 +13,17 @@ class Comment
         $this->db = new data_base();
     }
 
-    public function setData($name, $comment)
+    public function setData($name,$email, $comment)
     {
         $this->name    = $name;
+        $this->email = $email;
         $this->comment = $comment;
+
     }
 
     public function create()
     {
-        $query = "INSERT INTO $this->table(name, comment, comment_time) VALUES('$this->name', '$this->comment', now())";
+        $query = "INSERT INTO $this->table(name, email, comment, comment_time) VALUES('$this->name', '$this->email', '$this->comment', now())";
         $insert_comment = $this->db->insert($query);
         return $insert_comment;
     }
@@ -34,7 +37,7 @@ class Comment
 
     public function dateFormat($data)
     {
-        date_default_timezone_set('Asia/Dhaka');
+        date_default_timezone_set('Europe/Warsaw'); //Europe/Warsaw
         $date = date('M j, h:i:s a', time());
         return $date;
     }
