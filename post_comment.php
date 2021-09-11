@@ -3,8 +3,8 @@
   include_once 'comment.php';
   include_once 'login_process.php';
   $com = new Comment();
-  $list = array('noob','kurde','głupi','głupek','zjeb','zjebie','idiota','idioto','spierdalaj','buc','bucu','chuj','debil','szmata','wypierdalaj','kurwa','suko','dziwko');
-  $replace = array('****','*****','*****','******','****','******','******','******','**********','***','****','****','*****','******','***********','*****','****','******');
+  $list = array('noob','kurde','głupi','głupek','zjeb','zjebie','idiota','idioto','spierdalaj','buc','bucu','chuj','chuju','debil','debilu','szmata','szmato','wypierdalaj','kurwa','kurwo','suko','dziwko');
+  $replace = array('****','*****','*****','******','****','******','******','******','**********','***','****','****','*****','*****','******','******','******','***********','*****','******','****','******');
   $name = $_SESSION['username'];
   if(isset($_POST['submit'])) {
       $comment = $_POST['comment'];
