@@ -1,12 +1,16 @@
 <?php
+  include_once 'login_process.php';
   include_once 'comment.php';
   $com = new Comment();
-
+  if(empty($_SESSION['id'])):
+    header('Location:login.php');
+endif;
 ?>
 
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
+    <link rel="stylesheet" type="text/css" href="pliki_css/style.css">
     <meta charset="utf-8"/>
     <meta name="comment" content="napisz komentarz pod postem"/>
     <meta name="keywords" content="post, komentarz"/>
@@ -18,18 +22,23 @@
         .box ul{margin: 0;padding: 0;list-style: none;}
         .box li{display: block;border-bottom: 1px dashed #ddd;margin-bottom: 5px;padding-bottom: 5px;}
         .box li:last-child{border-bottom: 0 dashed #ddd;}
-        .box span{color: #888;}
+        .box span{color: floralwhite;}
     </style>
 </head>
-<body style="background-color: #0072B5">
+<a href="logout_process.php"><div style="float:right"><button>Wyloguj się</button></div></a>
+<!--style="background-color: slategrey"-->
+<body style="background-color: white">
+<h3>Chat społecznościowy z cenzurą niewłaściwych słów </h3>
    <div class="box">
        <ul>
            <?php
                $result = $com->index();
                while ($data = $result->fetch_assoc()) {
                ?>
+               <?php $com->check($data['comment']) ?>
                <li><b><?php echo $data['name'];?><b> - <?php echo $data['comment'] ?> - <?php echo $com->dateFormat($data['comment_time']); ?></li>
-              <?php } ?>
+
+               <?php } ?>
 
        </ul>
    </div><br><br>
@@ -40,26 +49,19 @@
         echo "<span style='color:green;font-size:20px'>".$msg."</span>";
     }
     ?>
+    <?php echo "<h1>Witaj ".$_SESSION['username']."!</h1>"?>
 
     <form action="post_comment.php" method="post"><br><br><br>
         <table>
             <tr>
-                <td>Your Name:</td>
-                <td><input style="width: 230px;height: 30px;" type="" name="name" placeholder="Please enter your name"></td>
-            </tr>
-            <tr>
-                <td>Your email:</td>
-                <td><input style="width: 230px;height: 30px" type="" name="email" placeholder="Please enter your email"></td>
-            </tr>
-            <tr>
-                <td>Comment:</td>
+                <td>Komentarz:</td>
                 <td>
-                    <textarea name="comment" rows="5" cols="30" placeholder="Please enter your comment"></textarea>
+                    <textarea name="comment" rows="5" cols="30" placeholder="Napisz komentarz"></textarea>
                 </td>
             </tr>
             <tr>
                 <td></td>
-                <td><input style="width: 235px;height: 40px;" type="submit" name="submit" value="Post"></td>
+                <td><input style="width: 235px;height: 40px;" type="submit" name="submit" value="Wyślij"></td>
             </tr>
         </table>
     </form>

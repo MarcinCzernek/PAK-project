@@ -10,21 +10,26 @@ class data_base
     public $link;
     public $error;
 
+
+
     public function __construct()
     {
         $this->connectDB();
     }
 
+
     private function connectDB()
     {
         $this->link = new mysqli($this->host, $this->user, $this->pass, $this->dbname);
         if (!$this->link) {
-            echo "Connection fail".$this->link->connect_error;
+            echo "Połączenie nieudane".$this->link->connect_error;
             return false;
         }
     }
 
-    // Insert Data
+
+
+    // Wprowadź dane
     public function insert($query)
     {
         $insert_row = $this->link->query($query) or die($this->link->error.__LINE__);
@@ -35,7 +40,7 @@ class data_base
         }
     }
 
-    // Select or Read data
+    // Wybierz lub czytaj dane
     public function select($query)
     {
         $result = $this->link->query($query) or die($this->link->error.__LINE__);

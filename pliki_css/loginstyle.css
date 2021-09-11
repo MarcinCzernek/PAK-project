@@ -1,0 +1,94 @@
+body{
+    background-image: url("../background/minimalist.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: "Raleway", sans-serif;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+.container{
+    width: 500px;
+    box-shadow: 0 15px 35px rgba(50,50,93,.1),0 5px 15px rgba(0,0,0,.07);
+    padding: 2em;
+    background-color: #fff;
+}
+
+.form-label{
+    font-size:.75em;
+    display: block;
+    opacity: 0;
+    transition: all .3s;
+    transform: translateX(-50px);
+
+}
+
+.form-group{
+    margin-bottom:1.5em;
+    transition:all .3s;
+}
+
+.form-group:focus-within{
+    transform:scale(1.1,1.1);
+}
+
+.form-control{
+    box-shadow:none;
+    border-radius:0;
+    border-color:#ccc;
+    border-style:none none solid none;
+    width:100%;
+    font-size:1.25em;
+    transition:all .6s;
+}
+
+.form-group:focus-within{
+    transform:scale(1.1,1.1);
+}
+
+.form-control::placeholder{
+    color:#aaa;
+}
+.form-control:focus{
+    box-shadow:none;
+    border-color:var(black);
+    outline:none;
+}
+
+.form-control:invalid:focus{
+    border-color:red;
+}
+.form-control:valid:focus{
+    border-color:green;
+}
+
+.btn{
+    background: 0 0 #fff;
+    border:1px solid #aaa;
+    border-radius: 3px;
+    color:#000000;
+    font-size:1em;
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+.btn:hover{
+    border-color: #000000;
+    color:#000000;
+}
+
+<!-- do pliku php register -->
+
+
+.error {
+    color: red;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+
+
