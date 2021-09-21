@@ -186,7 +186,7 @@ if (isset($_POST['email']))
                 unset($_SESSION['e_regulamin']);
             }
             ?>
-            <a href="regulamin.html">Zobacz regulamin</a>
+            <a href="website_regulations.html">Zobacz regulamin</a>
             <br/><br/>
             <div>
             <input type="submit" id="btn" class="btn" value="Zarejestruj się" name="Zarejestruj się"/>
